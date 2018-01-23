@@ -1,0 +1,1 @@
+{"virtualbox":{"/shared_folder":{"guestpath":"/shared_folder","hostpath":"C:/Users/David/Documents/infrastructure/vagrant/base-17lts-desktop-01/shared_folder","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"C:/Users/David/Documents/infrastructure/vagrant/base-17lts-desktop-01","disabled":false,"__vagrantfile":true}}}
