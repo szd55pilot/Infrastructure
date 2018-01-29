@@ -165,7 +165,14 @@ Vagrant.configure(2) do |config|
 			echo "ruby installed"
 		fi
 
-
+  # Install git.
+  
+		if [ -f /usr/bin/git ]; then
+			echo "git already installed"
+		else
+			sudo apt install -y git 2> /dev/null
+			echo "git installed"
+		fi
 
 
     SHELL
