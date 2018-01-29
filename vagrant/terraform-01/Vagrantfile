@@ -155,7 +155,18 @@ Vagrant.configure(2) do |config|
 			echo "terraform installed, use tf "
 			set +x	
 		fi
-		
+
+  # Install ruby.
+  
+		if [ -f /usr/bin/ruby ]; then
+			echo "ruby already installed"
+		else
+			sudo apt install -y ruby 2> /dev/null
+			echo "ruby installed"
+		fi
+
+
+
 
     SHELL
 
