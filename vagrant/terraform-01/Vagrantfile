@@ -110,6 +110,12 @@ Vagrant.configure(2) do |config|
        sudo adduser --disabled-password --gecos "" david
        sudo echo 'david:tcs14159' | chpasswd 
 
+  # Message user that package install will start
+  #
+	echo "****************************"
+	echo "* Start of package install *"
+	echo "****************************"
+
   # Install jq (for JSON parsing) and curl.
   
         if [ -f /usr/bin/jq ]; then
@@ -118,6 +124,8 @@ Vagrant.configure(2) do |config|
            sudo apt install -y jq 2> /dev/null
         fi
 
+	echo "****************************"
+
   # Install curl.
   
         if [ -f /usr/bin/curl ]; then
@@ -125,6 +133,8 @@ Vagrant.configure(2) do |config|
         else
            sudo apt install -y curl 2> /dev/null
         fi
+
+	echo "****************************"
 
   # Install terraform (latest version)
 
@@ -156,6 +166,8 @@ Vagrant.configure(2) do |config|
 			set +x	
 		fi
 
+	echo "****************************"
+
   # Install ruby.
   
 		if [ -f /usr/bin/ruby ]; then
@@ -164,6 +176,8 @@ Vagrant.configure(2) do |config|
 			sudo apt install -y ruby-full 2> /dev/null
 			echo "ruby installed"
 		fi
+
+	echo "****************************"
 
   # Install git.
   
@@ -174,11 +188,35 @@ Vagrant.configure(2) do |config|
 			echo "git installed"
 		fi
 
+	echo "****************************"
+
   # Install Chef and prerequisites
 
+		sudo apt install -y zlibc zlib1g zlib1g-dev
 		sudo gem update --no-rdoc --no-ri
 		sudo gem install chef --no-rdoc --no-ri
 
+	echo "****************************"
+
+  # Install Vagrant
+
+		if [ -f /usr/bin/vagrant ]; then
+			echo "vagrant already installed"
+		else
+			sudo apt install -y vagrant 2> /dev/null
+			echo "vagrant installed"
+
+		fi
+
+	echo "****************************"
+
+  # Cleanup
+		sudo apt autoremove
+
+	echo " "
+	echo "****************************"
+	echo "* End of package install *"
+	echo "****************************"
 
     SHELL
 
