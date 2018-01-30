@@ -227,6 +227,7 @@ Vagrant.configure(2) do |config|
 	else
   		cd /home/vagrant
 		git clone https://github.com/szd55pilot/infrastructure.git
+		chown -R vagrant:vagrant /home/vagrant/infrastructure
 		echo "Code repo @ ~vagrant/infrastructure"
 	fi
 
