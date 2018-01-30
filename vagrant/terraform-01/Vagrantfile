@@ -185,6 +185,8 @@ Vagrant.configure(2) do |config|
 			echo "git already installed"
 		else
 			sudo apt install -y git 2> /dev/null
+			git config --global user.name "David Pye"
+			git config --global user.email szd55pilot@gmail.com
 			echo "git installed"
 		fi
 
@@ -217,6 +219,19 @@ Vagrant.configure(2) do |config|
 	echo "****************************"
 	echo "* End of package install *"
 	echo "****************************"
+
+  # Download Code tree
+
+	if [ -d /home/vagrant/infrastructure ]; then
+		echo "Code tree installed, but maybe you need to pull"
+	else
+  		cd /home/vagrant
+		git clone https://github.com/szd55pilot/infrastructure.git
+		echo "Code repo @ ~vagrant/infrastructure"
+	fi
+
+	echo "****************************"
+
 
     SHELL
 
