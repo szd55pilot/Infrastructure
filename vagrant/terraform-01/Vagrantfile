@@ -4,6 +4,8 @@
 # Purpose:	Build infrastructure build box, based on terraform.
 # Date:		Jan 2018
 # Author:	David Pye (szd55pilot@gmail.com)
+# Notes:	For some reason, I need to RELOAD this and Provision 2nd time.
+#
 
 # All Vagrant configuration is done below. The "2" in Vagrant.configure
 # configures the configuration version (we support older styles for
