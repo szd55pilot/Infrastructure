@@ -1,0 +1,42 @@
+To fix certs issue
+
+dm regenerate-certs manager1
+
+
+Lab visualiser
+
+http://192.168.99.100:8080/
+
+
+To fire up the lab :-)
+
+Check all machines down
+dm ls (note: dm is alias to docker-machine in ~/.alias and needs BASH shell)
+
+Start up required no. of machines
+e.g. dm start manager1 myvm1 myvm2 myvm3
+
+Check status and regen certs if required
+dm ls
+dm regenerate-certs myvm1 myvm2
+
+Status good, remove vms from swarm and re-add
+dm ssh myvm1 docker swarm leave
+dm ssh manager1 docker node rm myvm1 myvm2 myvm3
+
+dm ssh manager1 docker swarm join-token worker
+dm ssh myvm1 docker swarm join --token blahhhhhhhhhh from previous cmd
+
+Check status of swarm (cluster)
+dm ssh manager1 docker node ls
+
+Deploy stack
+docker stack deploy -c ./docker-compose.yml getstartedlab
+
+Check if you wish!
+
+May need to recreate manager1:~/.data and rerun stack deploy for Redis to work.
+
+To Stop
+docker stack rm getstartedlab
+dm stop manager1 myvm1 myvm2 myvm3
